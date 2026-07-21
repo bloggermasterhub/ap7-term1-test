@@ -2269,11 +2269,17 @@ function displayLoadedQRCode(qrData) {
     qrTarget.innerHTML = "";
     container.style.display = "block";
 
-    new QRCode(qrTarget, {
-        text: JSON.stringify(qrData),
-        width: 250,
-        height: 250
-    });
+const qrText =
+    "https://bloggermasterhub.github.io/test/trial-ap7-term1.html"
+    + "?test=" + encodeURIComponent(qrData.test || qrData.t)
+    + "&studentName=" + encodeURIComponent(qrData.studentName || qrData.n)
+    + "&gradeSection=" + encodeURIComponent(qrData.gradeSection || qrData.g);
+
+new QRCode(qrTarget, {
+    text: qrText,
+    width: 250,
+    height: 250
+});
 }      
 
 
